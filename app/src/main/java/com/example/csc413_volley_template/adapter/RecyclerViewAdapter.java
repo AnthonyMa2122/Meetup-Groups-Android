@@ -10,7 +10,7 @@ import android.widget.TextView;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
 import com.example.csc413_volley_template.app.App;
-import com.example.csc413_volley_template.model.Movie;
+import com.example.csc413_volley_template.model.events;
 import com.example.csc413_volley_template.R;
 import com.example.csc413_volley_template.volley.VolleySingleton;
 
@@ -22,10 +22,10 @@ import java.util.List;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private List<Movie> movieList;
+    private List<events> movieList;
     private OnClickListener listener;
 
-    public RecyclerViewAdapter(List<Movie> movieList) {
+    public RecyclerViewAdapter(List<events> movieList) {
         this.movieList = movieList;
     }
 
@@ -38,14 +38,17 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        Movie movie = movieList.get(position);
+       // Movie movie = movieList.get(position);
 
+         events events = movieList.get(position);
         CardViewHolder cardViewHolder = (CardViewHolder) holder;
-        cardViewHolder.setTitle(movie.getTitle());
-        cardViewHolder.setYear(movie.getYear());
-        cardViewHolder.setPosterUrl(movie.getPosterUrl());
+
+        cardViewHolder.setTitle(events.getName());
+        cardViewHolder.setYear(events.getName());
+        cardViewHolder.setPosterUrl(events.getDescription());
+
         if(listener!=null) {
-            cardViewHolder.bindClickListener(listener, movie);
+            cardViewHolder.bindClickListener(listener, events);
         }
     }
 
@@ -59,7 +62,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
      * Once the data is updated, notifies RecyclerViewAdapter.
      * @param modelList list of movies
      */
-    public void updateDataSet(List<Movie> modelList) {
+    public void updateDataSet(List<events> modelList) {
         this.movieList.clear();
         this.movieList.addAll(modelList);
         notifyDataSetChanged();
@@ -70,8 +73,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     }
 
     public interface OnClickListener {
-        void onCardClick(Movie movie);
-        void onPosterClick(Movie movie);
+        void onCardClick(events movie);
+        void onPosterClick(events movie);
     }
 
     /**
@@ -126,22 +129,21 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         }
 
         /**
-         *
-         * @param listener {@link OnClickListener}
-         * @param movie
+         *  @param listener {@link OnClickListener}
+         * @param events
          */
-        void bindClickListener(final OnClickListener listener, final Movie movie){
+        void bindClickListener(final OnClickListener listener, final events events){
             cardView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    listener.onCardClick(movie);
+                    listener.onCardClick(events);
                 }
             });
 
             poster.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    listener.onPosterClick(movie);
+                    listener.onPosterClick(events);
                 }
             });
         }

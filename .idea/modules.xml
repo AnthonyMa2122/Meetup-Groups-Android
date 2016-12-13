@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/CSC413-Assignment-2-Template.iml" filepath="$PROJECT_DIR$/CSC413-Assignment-2-Template.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CSC413-Volley-Sample.iml" filepath="$PROJECT_DIR$/CSC413-Volley-Sample.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

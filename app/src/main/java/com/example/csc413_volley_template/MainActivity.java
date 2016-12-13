@@ -15,7 +15,7 @@ import android.widget.Toast;
 
 import com.example.csc413_volley_template.adapter.RecyclerViewAdapter;
 import com.example.csc413_volley_template.controller.JsonController;
-import com.example.csc413_volley_template.model.Movie;
+import com.example.csc413_volley_template.model.events;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,18 +45,18 @@ public class MainActivity extends AppCompatActivity
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(layoutManager);
 
-        adapter = new RecyclerViewAdapter(new ArrayList<Movie>());
+        adapter = new RecyclerViewAdapter(new ArrayList<events>());
         adapter.setListener(this);
 
         controller = new JsonController(
             new JsonController.OnResponseListener() {
                 @Override
-                public void onSuccess(List<Movie> movies) {
-                    if(movies.size() > 0) {
+                public void onSuccess(List<events> eventses) {
+                    if(eventses.size() > 0) {  //chanfe
                         textView.setVisibility(View.GONE);
                         recyclerView.setVisibility(View.VISIBLE);
                         recyclerView.invalidate();
-                        adapter.updateDataSet(movies);
+                        adapter.updateDataSet(eventses);
                         recyclerView.setAdapter(adapter);
                     }
                 }
@@ -131,18 +131,20 @@ public class MainActivity extends AppCompatActivity
     /**
      * Interface Implementation
      * <p>This method will be invoked when user press anywhere on cardview</p>
+     * @param movie
      */
     @Override
-    public void onCardClick(Movie movie) {
-        Toast.makeText(this, movie.getTitle() + " clicked", Toast.LENGTH_SHORT).show();
+    public void onCardClick(events movie) {
+        Toast.makeText(this, movie.getName() + " clicked", Toast.LENGTH_SHORT).show();
     }
 
     /**
      * Interface Implementation
      * <p>This method will be invoked when user press on poster of the movie</p>
+     * @param movie
      */
     @Override
-    public void onPosterClick(Movie movie) {
-        Toast.makeText(this, movie.getTitle() + " poster clicked", Toast.LENGTH_SHORT).show();
+    public void onPosterClick(events movie) {
+        Toast.makeText(this, movie.getName() + " poster clicked", Toast.LENGTH_SHORT).show();
     }
 }

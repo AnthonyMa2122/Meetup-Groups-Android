@@ -30,6 +30,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"/>
 
+
             <TextView
                 android:id="@+id/tvTitle"
                 android:layout_width="wrap_content"

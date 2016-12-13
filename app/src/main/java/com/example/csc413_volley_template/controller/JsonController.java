@@ -1,12 +1,10 @@
 package com.example.csc413_volley_template.controller;
 
-import android.net.Uri;
-
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.example.csc413_volley_template.app.App;
-import com.example.csc413_volley_template.model.Movie;
+import com.example.csc413_volley_template.model.events;
 import com.example.csc413_volley_template.request.JsonRequest;
 import com.example.csc413_volley_template.volley.VolleySingleton;
 
@@ -43,17 +41,29 @@ public class JsonController {
         int method = Request.Method.GET;
 
         // Url with GET parameters
-        String url = "http://www.omdbapi.com/?s=" + Uri.encode(query) + "&t=movie";
+        //String url = "http://www.omdbapi.com/?s=" + Uri.encode(query) + "&t=movie";
 
+       // String url = "https://api.meetup.com/find/topics?key=693b2553836553f1d95886f554618&sign=true&photo-host=public&query="+ query;
+        String url = "https://api.meetup.com/find/groups?key=693b2553836553f1d95886f554618&text="+ query + "&page=20";
+        //https://api.meetup.com/find/groups?key=693b2553836553f1d95886f554618&text=hiking&page=20
+
+
+        //String url = "http://pokeapi.co/api/v2/pokemon/" + query;     pokemon
+
+
+        //String url = "https://api.meetup.com/find/events?photo-host=public&sig_id=217757204&sig=b4a832a2905dfd0f24dde2370ef9ecc8c7a6d00e";
+            // ^meet up
+
+        //String url = "https://api.imgur.com/3/image/{id}\n"; imgur, type in id part???
         // Create new request using JsonRequest
         JsonRequest request
             = new JsonRequest(
                 method,
                 url,
-                new Response.Listener<List<Movie>>() {
+                new Response.Listener<List<events>>() {
                     @Override
-                    public void onResponse(List<Movie> movies) {
-                        responseListener.onSuccess(movies);
+                   public void onResponse(List<events> eventss ) {
+                        responseListener.onSuccess(eventss); //in main activity
                     }
                 },
                 new Response.ErrorListener() {
@@ -84,7 +94,7 @@ public class JsonController {
      *  <p>Object available in {@link JsonRequest} and implemented in {@link com.example.csc413_volley_template.MainActivity}</p>
      */
     public interface OnResponseListener {
-        void onSuccess(List<Movie> movies);
+        void onSuccess(List<events> eventss);
         void onFailure(String errorMessage);
     }
 
