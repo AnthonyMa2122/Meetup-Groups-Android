@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity
             new JsonController.OnResponseListener() {
                 @Override
                 public void onSuccess(List<events> eventses) {
-                    if(eventses.size() > 0) {  //chanfe
+                    if(eventses.size() > 0) {  //change
                         textView.setVisibility(View.GONE);
                         recyclerView.setVisibility(View.VISIBLE);
                         recyclerView.invalidate();
