@@ -38,15 +38,15 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-       // Movie movie = movieList.get(position);
 
-         events events = movieList.get(position);
+        events events = movieList.get(position);
         CardViewHolder cardViewHolder = (CardViewHolder) holder;
 
         cardViewHolder.setTitle(events.getName());
-        cardViewHolder.setYear(events.getName());
-        cardViewHolder.setPosterUrl(events.getDescription());
-
+        cardViewHolder.setCity(events.getCity());
+        cardViewHolder.setMembers(events.getMembers());
+        cardViewHolder.setPosterUrl(events.getPhoto_link());
+        cardViewHolder.setGroup_id(events.getId());
         if(listener!=null) {
             cardViewHolder.bindClickListener(listener, events);
         }
@@ -84,8 +84,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
         private CardView cardView;
         private TextView title;
-        private TextView year;
+        private TextView city;
+        private TextView members;
         private NetworkImageView poster;
+        private TextView group_id;
 
         /**
          * Class constructor.
@@ -95,8 +97,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             super(view);
             this.cardView = (CardView) view.findViewById(R.id.card_view);
             this.title = (TextView) view.findViewById(R.id.tvTitle);
-            this.year = (TextView) view.findViewById(R.id.tvYear);
+            this.city = (TextView) view.findViewById(R.id.tvYear);
             this.poster = (NetworkImageView) view.findViewById(R.id.nivPoster);
+            this.members = (TextView) view.findViewById(R.id.Attendees);
+            this.group_id = (TextView) view.findViewById(R.id.group_id);
         }
 
         /**
@@ -104,17 +108,26 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
          * @param title String of Title of movie
          */
         void setTitle(String title) {
-            String t = "Title:\n" + title;
+            String t = "Name:\n" + title;
             this.title.setText(t);
         }
 
         /**
-         * append year text to Release Year:
-         * @param year String of year of release
+         * append city text to Release Year:
+         * @param city String of city of release
          */
-        void setYear(String year) {
-            String y = "Release Year:\n" + year;
-            this.year.setText(y);
+        void setCity(String city) {
+            String y = "City:\n" + city;
+            this.city.setText(y);
+        }
+
+        void setMembers(String members){
+            String z = "Members:\n" +members;
+            this.members.setText(z);
+        }
+        void setGroup_id(String group_id){
+            String xy ="ID:\n" + group_id;
+            this.group_id.setText(xy);
         }
 
         /**
