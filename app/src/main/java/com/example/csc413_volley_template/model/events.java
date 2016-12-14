@@ -16,16 +16,23 @@ public class events {
 
     private String id;
     private String name;
-    private String city;
-    private String photo_link;
-    private String members;
+    private String description;
 
 
     public static List<events> parseJson(JSONArray jsonArray) throws JSONException {
         List<events> List_events = new ArrayList<>();
-        for(int i = 0; i < jsonArray.length(); i++){
+
+        //JSONArray jjsonArray = new JSONArray(jsonArray);
+
+            for(int i = 0; i < jsonArray.length(); i++){
+
                 JSONObject jjsonobj = jsonArray.getJSONObject(i);
+
                 List_events.add(new events(jsonArray.getJSONObject(i)));
+                //List_events.add(new events(List_events.getJSONObject(i)));
+
+                // Create new Movie object from each JSONObject in the JSONArray
+              //  List_events.add(new events(jsonArray.getJSONObject(i)));
             }
 
 
@@ -36,9 +43,7 @@ public class events {
     private events(JSONObject jsonObject) throws JSONException {
         if(jsonObject.has("id")) this.setId(jsonObject.getString("id"));
         if(jsonObject.has("name")) this.setName(jsonObject.getString("name"));
-        if(jsonObject.has("city")) this.setCity(jsonObject.getString("city"));
-        if(jsonObject.has("members")) this.setMembers(jsonObject.getString("members"));
-        if(jsonObject.has("photo_link")) this.setPhoto_link(jsonObject.getString("photo_link"));
+        if(jsonObject.has("description")) this.setDescription(jsonObject.getString("description"));
 
     }
 
@@ -59,27 +64,11 @@ public class events {
         this.name = name;
     }
 
-    public String getCity() {
-        return city;
+    public String getDescription() {
+        return description;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public void setDescription(String description) {
+        this.description = description;
     }
-
-    public String getPhoto_link() {
-        return photo_link;
-    }
-
-    public void setPhoto_link(String photo_link) {
-        this.photo_link = photo_link;
-    }
-    public String getMembers() {
-        return members;
-    }
-
-    public void setMembers(String members) {
-        this.members = members;
-    }
-
 }

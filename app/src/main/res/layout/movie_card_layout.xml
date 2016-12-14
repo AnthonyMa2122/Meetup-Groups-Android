@@ -11,7 +11,7 @@
         android:id="@+id/card_view"
         android:layout_gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="150dp"
         android:background="@color/cardview_dark_background"
         card_view:cardCornerRadius="4dp"
         app:cardElevation="4dp"
@@ -19,54 +19,37 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="160dp">
+            android:layout_height="match_parent">
+
+            <com.android.volley.toolbox.NetworkImageView
+                android:id="@+id/nivPoster"
+                android:layout_width="100dp"
+                android:layout_height="130dp"
+                android:layout_marginEnd="20dp"
+                android:src="@drawable/loader"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"/>
 
 
             <TextView
                 android:id="@+id/tvTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                 android:text="Movie Title"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentStart="true" />
+                android:layout_alignTop="@+id/nivPoster"
+                android:layout_alignParentStart="true"
+                android:layout_toStartOf="@+id/nivPoster" />
 
             <TextView
                 android:id="@+id/tvYear"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="end"
-                android:text="City"
+                android:text="Release Year"
                 android:layout_alignBottom="@+id/nivPoster"
                 android:layout_toStartOf="@+id/nivPoster" />
-
-            <com.android.volley.toolbox.NetworkImageView
-                android:id="@+id/nivPoster"
-                android:layout_width="100dp"
-                android:layout_height="130dp"
-                android:src="@drawable/loader"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentBottom="true" />
-
-            <TextView
-                android:text="ID:"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/group_id"
-                android:layout_above="@+id/Attendees"
-                android:layout_alignParentStart="true"
-                android:layout_marginBottom="16dp"
-                android:layout_alignEnd="@+id/tvTitle" />
-
-            <TextView
-                android:text="Attendees:"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/Attendees"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentStart="true"
-                android:layout_alignEnd="@+id/group_id" />
         </RelativeLayout>
     </android.support.v7.widget.CardView>
 
