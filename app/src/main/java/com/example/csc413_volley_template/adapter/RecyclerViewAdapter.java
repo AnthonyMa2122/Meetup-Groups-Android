@@ -134,7 +134,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
          * Sends ImageRequest using volley using imageLoader and Cache.
          * This is pre-implemented feature of Volley to cache images for faster responses.
          * Check VolleySingleton class for more details.
-         * @param imageUrl URL to poster of the Movie
+         *
          */
         void setPosterUrl(String imageUrl) {
             ImageLoader imageLoader = VolleySingleton.getInstance(App.getContext()).getImageLoader();

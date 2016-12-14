@@ -8,6 +8,7 @@ import com.example.csc413_volley_template.model.events;
 import com.example.csc413_volley_template.request.JsonRequest;
 import com.example.csc413_volley_template.volley.VolleySingleton;
 
+import java.net.URL;
 import java.util.List;
 
 /*
@@ -43,8 +44,8 @@ public class JsonController {
         // Url with GET parameters
         //String url = "http://www.omdbapi.com/?s=" + Uri.encode(query) + "&t=movie";
 
-       // String url = "https://api.meetup.com/find/topics?key=693b2553836553f1d95886f554618&sign=true&photo-host=public&query="+ query;
-        String url = "https://api.meetup.com/find/groups?key=693b2553836553f1d95886f554618&text="+ query + "&page=20";
+        String url = "https://api.meetup.com/2/groups?key=693b2553836553f1d95886f554618&sign=true&photo-host=public&topic=" + query + "&page=20" ;
+      //  String url = "https://api.meetup.com/find/groups?key=693b2553836553f1d95886f554618&text="+ query + "&page=20";
         //https://api.meetup.com/find/groups?key=693b2553836553f1d95886f554618&text=hiking&page=20
 
 

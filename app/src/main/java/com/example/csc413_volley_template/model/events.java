@@ -22,7 +22,7 @@ public class events {
     private String photo_link;
     private String members;
 
-
+/**
     public static List<events> parseJson(JSONArray jsonArray) throws JSONException {
         List<events> List_events = new ArrayList<>();
 
@@ -35,26 +35,26 @@ public class events {
 
         return List_events;
     }
-    /**
+    **/
      public static List<events> parseJson (JSONObject jsonObject) throws JSONException{
      List<events> events = new ArrayList<>();
      if (jsonObject.has("results")){
      JSONArray jsonArray = jsonObject.getJSONArray("results");
      for (int i = 0; i<jsonArray.length(); i++){
-     events.add(new events(jsonArray.getJSONObject(i)));
-     }
-     }
-     return events;
+        events.add(new events(jsonArray.getJSONObject(i)));
+            }
+        }
+        return events;
      }
 
-     **/
+
     private events(JSONObject jsonObject) throws JSONException {
         if(jsonObject.has("id")) this.setId(jsonObject.getString("id"));
         if(jsonObject.has("name")) this.setName(jsonObject.getString("name"));
         if(jsonObject.has("city")) this.setCity(jsonObject.getString("city"));
         if(jsonObject.has("members")) this.setMembers(jsonObject.getString("members"));
-        if(jsonObject.has("photo_link")) this.setPhoto_link(jsonObject.getString("photo_link"));
-        // if(jsonObject.getJSONObject("group_photo").has("photo_link")) this.setPhoto_link(jsonObject.getJSONObject("group_photo").getString("photo_link"));
+       // if(jsonObject.has("photo_link")) this.setPhoto_link(jsonObject.getString("photo_link"));
+        if(jsonObject.getJSONObject("group_photo").has("photo_link")) this.setPhoto_link(jsonObject.getJSONObject("group_photo").getString("photo_link"));
     }
 
 
@@ -89,6 +89,7 @@ public class events {
     public void setPhoto_link(String photo_link) {
         this.photo_link = photo_link;
     }
+
     public String getMembers() {
         return members;
     }

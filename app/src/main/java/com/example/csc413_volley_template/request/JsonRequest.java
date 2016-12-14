@@ -11,7 +11,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.example.csc413_volley_template.model.events;
-import com.example.csc413_volley_template.model.Movie;
+
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -46,23 +46,19 @@ public class JsonRequest extends Request<List<events>> {
     protected Response<List<events>> parseNetworkResponse(NetworkResponse response) {
         // Convert byte[] data received in the response to String
         String jsonString = new String(response.data);      //START HERE, get the string
-        List<Movie> movies;
         JSONObject jsonObject;
         List<events> hold_eventers;
-
-        JSONArray jsonArray;
-
+        //JSONArray jsonArray;
         Log.i(this.getClass().getName(), jsonString);
         // Try to convert JsonString to list of movies
         try {
             // Convert JsonString to JSONObject
-          //  jsonObject = new JSONObject(jsonString);    //meetup starts with an array so use
-            // Get list of movies from received JSON        //jsonarrya = new jsonnarray(stringthingy)
-            //movies = Movie.parseJson(jsonObject);
+            jsonObject = new JSONObject(jsonString);    //meetup starts with an array so use
+            hold_eventers = events.parseJson(jsonObject);
 
 
-            jsonArray = new JSONArray(jsonString);
-            hold_eventers = events.parseJson(jsonArray);
+            //jsonArray = new JSONArray(jsonString);
+            //hold_eventers = events.parseJson(jsonArray);
 
 
 
