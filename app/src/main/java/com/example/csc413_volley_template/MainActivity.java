@@ -64,8 +64,8 @@ public class MainActivity extends AppCompatActivity
                     @Override
                     public void onFailure(String errorMessage) {
                         textView.setVisibility(View.VISIBLE);
-                        textView.setText("Failed to retrieve data");
-                        Toast.makeText(MainActivity.this, "Failed to retrieve data", Toast.LENGTH_SHORT).show();
+                        textView.setText("Please Enter Proper Group Name");
+                        Toast.makeText(MainActivity.this, "No Data Found", Toast.LENGTH_SHORT).show();
                     }
                 });
     }
@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity
         SearchView searchView = (SearchView) MenuItemCompat.getActionView(menuItem);
         searchView.setOnQueryTextListener(this);
         searchView.setIconifiedByDefault(true);
-        searchView.setQueryHint("Search");
+        searchView.setQueryHint("Search Topics");
         searchView.setSubmitButtonEnabled(true);
         return true;
     }
